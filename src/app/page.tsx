@@ -2,9 +2,11 @@
 
 import { AiFillCaretUp } from 'react-icons/ai'
 import { Button } from '@/components/button/button.component'
+import { ButtonGroup } from '@/components/button-group/button-group.component'
 import { ButtonIcon } from '@/components/button-icon/button-icon.component'
 import Input from '@/components/input/input.component'
 import { Select } from '@/components/select/select.component'
+import { useState } from 'react'
 
 export default function Home() {
   const categorias = [
@@ -12,6 +14,13 @@ export default function Home() {
     { label: 'Ropa', value: 'ropa' },
     { label: 'Hogar', value: 'hogar' }
   ]
+
+  const buttonGroupOptions = [
+    { label: 'Opción 1', value: '1' },
+    { label: 'Opción 2', value: '2' },
+    { label: 'Opción 3', value: '3' }
+  ]
+  const [selectedValue, setSelectedValue] = useState<string>(buttonGroupOptions[0].value)
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
@@ -31,6 +40,7 @@ export default function Home() {
         placeholder="This is the placeholder"
       />
       <Input hasError errorMessage="Este es un error" />
+      <ButtonGroup value={selectedValue} options={buttonGroupOptions} onChange={setSelectedValue} />
     </div>
   )
 }
