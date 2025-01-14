@@ -5,6 +5,7 @@ import { Button } from '@/components/button/button.component'
 import { ButtonGroup } from '@/components/button-group/button-group.component'
 import { ButtonIcon } from '@/components/button-icon/button-icon.component'
 import { Checkbox } from '@/components/checkbox/checkbox.component'
+import { Dropzone } from '@/components/input-file/input-file.component'
 import Input from '@/components/input/input.component'
 import { Select } from '@/components/select/select.component'
 import { useState } from 'react'
@@ -22,6 +23,15 @@ export default function Home() {
     { label: 'Opción 3', value: '3' }
   ]
   const [selectedValue, setSelectedValue] = useState<string>(buttonGroupOptions[0].value)
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([])
+  const [selectedFile, setSelectedFile] = useState<File | undefined>()
+
+  const handleAddFile = (files: File[]) => {
+    setSelectedFiles(files)
+  }
+  const handleAddSingleFile = (files: File[]) => {
+    setSelectedFile(files[0])
+  }
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
@@ -43,6 +53,19 @@ export default function Home() {
       <Input hasError errorMessage="Este es un error" />
       <ButtonGroup value={selectedValue} options={buttonGroupOptions} onChange={setSelectedValue} />
       <Checkbox label="This is a checkbox" />
+      <p className="text-white">Multiple files</p>
+      <Dropzone
+        acceptedFiles={{ 'image/*': ['.png', '.jpg', '.jpeg'] }}
+        onDrop={handleAddFile}
+        selectedFiles={selectedFiles}
+      />
+      <p className="text-white">Single file</p>
+      <Dropzone
+        acceptedFiles={{ 'image/*': ['.png', '.jpg', '.jpeg'] }}
+        onDrop={handleAddSingleFile}
+        selectedFiles={selectedFile ? [selectedFile] : []}
+        singleFile
+      />
     </div>
   )
 }

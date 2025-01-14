@@ -1,0 +1,6 @@
+.image-container-remove {
+  visibility: hidden;
+}
+.image-container:hover .image-container-remove {
+  visibility: visible;
+}
