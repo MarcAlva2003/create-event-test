@@ -16,14 +16,14 @@ export const Checkbox: React.FC<CheckboxProps> = ({ label, defaultChecked, ...re
   }
 
   const checkboxContainer = clsx(
-    'relative h-6 w-6 border-gray-200 rounded-md',
+    'relative h-[18px] w-[18px] border-gray-200 rounded-md',
     isChecked ? 'bg-green-300 border-green-300' : ''
   )
 
   return (
     <div className="flex items-center">
       <div className={checkboxContainer}>
-        {isChecked && <IoMdCheckmark size={18} className="absolute text-black top-[3px] left-[3px]" />}
+        {isChecked && <IoMdCheckmark size={12} className="absolute text-black top-[3px] left-[3px]" />}
 
         <input
           type="checkbox"
@@ -43,7 +43,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({ label, defaultChecked, ...re
         />
       </div>
       {label && (
-        <label htmlFor={rest.id} className="ml-3 text-white hover:cursor-pointer">
+        <label htmlFor={rest.id} className="ml-3 text-sm text-white hover:cursor-pointer">
           {label}
         </label>
       )}

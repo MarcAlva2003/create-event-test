@@ -6,7 +6,7 @@ interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string
 }
 
-const Input: React.FC<IInputProps> = (props: IInputProps) => {
+export const Input: React.FC<IInputProps> = (props: IInputProps) => {
   const { errorMessage, hasError, label, ...rest } = props
 
   return (
@@ -31,6 +31,7 @@ const Input: React.FC<IInputProps> = (props: IInputProps) => {
           focus:outline-none
           focus:ring-1
           focus:ring-[#FFFFFF33]
+           h-[48px]
           ${hasError ? 'border-red-500 focus:ring-red-500 bg-[#E74C3C1A]' : 'border-[transparent]'}
         `}
       />
@@ -38,5 +39,3 @@ const Input: React.FC<IInputProps> = (props: IInputProps) => {
     </div>
   )
 }
-
-export default Input
