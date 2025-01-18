@@ -7,14 +7,16 @@ import { FaUpload } from 'react-icons/fa'
 import Image from 'next/image'
 import { MdDeleteForever } from 'react-icons/md'
 
-interface DropzoneProps {
+interface IDropzoneProps {
   onDrop: (acceptedFiles: File[]) => void
   singleFile?: boolean
   acceptedFiles: Accept
   selectedFiles: File[]
+  label?: string
 }
 
-export const Dropzone: React.FC<DropzoneProps> = ({ onDrop, singleFile, acceptedFiles, selectedFiles }) => {
+export const Dropzone: React.FC<IDropzoneProps> = (props: IDropzoneProps) => {
+  const { onDrop, singleFile, acceptedFiles, selectedFiles, label } = props
   const [files, setFiles] = useState<File[]>([])
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
@@ -36,6 +38,9 @@ export const Dropzone: React.FC<DropzoneProps> = ({ onDrop, singleFile, accepted
 
   return (
     <div className="w-full">
+      {label && (
+        <label className="block font-bold mb-2 text-white font-medium text-sm">{label}</label>
+      )}
       <div
         {...getRootProps()}
         className={`
@@ -43,7 +48,7 @@ export const Dropzone: React.FC<DropzoneProps> = ({ onDrop, singleFile, accepted
         w-full
         h-48
         rounded-xl
-        bg-[#333333]
+        bg-[#FFFFFF1A]
         border-2
         border-dashed
         border-[#474747]
