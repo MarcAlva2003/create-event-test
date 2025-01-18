@@ -5,7 +5,7 @@ import { Button } from '@/components/button/button.component'
 import { ButtonGroup } from '@/components/button-group/button-group.component'
 import { ButtonIcon } from '@/components/button-icon/button-icon.component'
 import { Checkbox } from '@/components/checkbox/checkbox.component'
-import Input from '@/components/input/input.component'
+import { Input } from '@/components/input/input.component'
 import { Select } from '@/components/select/select.component'
 import { useState } from 'react'
 

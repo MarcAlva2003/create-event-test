@@ -9,6 +9,6 @@ export default function RootLayout({
     <div className="w-248px">
       <CreateEventSidebar/>
     </div>
-    <div className="w-full">{children}</div>
+    <div className="w-full p-5">{children}</div>
   </div>
 }
